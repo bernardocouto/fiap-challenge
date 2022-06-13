@@ -2,7 +2,7 @@
 
 ## Arquitetura
 
-![Arquitetura]('./documentations/images/architecture.jpg')
+<img alt="Arquitetura" src="./documentations/images/architecture.jpg" />
 
 ## AWS
 
