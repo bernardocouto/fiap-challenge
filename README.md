@@ -1,5 +1,11 @@
 # FIAP Challenge
 
+## Equipe
+
+* Bernardo Couto
+* Raphael Freixo
+* Ronaldo Nolasco
+
 ## Arquitetura
 
 <img alt="Arquitetura" src="./documentations/images/architecture.jpg" />
