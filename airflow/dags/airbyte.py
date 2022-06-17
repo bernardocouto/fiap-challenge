@@ -1,5 +1,6 @@
 from airflow import DAG
 from airflow.providers.airbyte.operators.airbyte import AirbyteTriggerSyncOperator
+from airflow.providers.airbyte.sensors.airbyte import AirbyteJobSensor
 from datetime import datetime, timedelta
 
 import os
@@ -25,6 +26,12 @@ with DAG('airbyte',
         task_id='heatl_landing'
     )
 
+    heatl_landing_sensor = AirbyteJobSensor(
+        airbyte_conn_id='airbyte_default',
+        airbyte_job_id=heatl_landing.output,
+        task_id='heatl_landing_sensor'
+    )
+
     sales_landing = AirbyteTriggerSyncOperator(
         airbyte_conn_id='airbyte_default',
         asynchronous=False,
@@ -32,5 +39,11 @@ with DAG('airbyte',
         task_id='sales_landing'
     )
 
-    heatl_landing
-    sales_landing
+    sales_landing_sensor = AirbyteJobSensor(
+        airbyte_conn_id='airbyte_default',
+        airbyte_job_id=sales_landing.output,
+        task_id='sales_landing_sensor'
+    )
+
+    heatl_landing >> heatl_landing_sensor
+    sales_landing >> sales_landing_sensor
