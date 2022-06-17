@@ -23,7 +23,9 @@ Para utilização do Terraform será necessário criar um Bucket no AWS S3 com n
 
 ### Covid19
 
+URL:https://www.kaggle.com/datasets/allen-institute-for-ai/CORD-19-research-challenge
 
+Size:20gb
 
 col_name|data_type|comment
 |---------|-----|-----|
@@ -739,6 +741,9 @@ cumulative_vaccine_doses_administered_janssen|int|null
 
 ## Iowa Liquor
 
+URL:https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy
+
+Tamanho: 5gb
 
 col_name|data_type|comment
 |--------|--------|-------|
