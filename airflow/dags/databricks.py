@@ -24,11 +24,23 @@ with DAG('databricks',
         task_id='health_bronze'
     )
 
+    heatl_silver = DatabricksRunNowOperator(
+        databricks_conn_id='databricks_default',
+        job_id=os.environ.get('HEALTH_SILVER_JOB'),
+        task_id='health_silver'
+    )
+
     sales_bronze = DatabricksRunNowOperator(
         databricks_conn_id='databricks_default',
         job_id=os.environ.get('SALES_BRONZE_JOB'),
         task_id='sales_bronze'
     )
 
-    heatl_bronze
-    sales_bronze
+    sales_silver = DatabricksRunNowOperator(
+        databricks_conn_id='databricks_default',
+        job_id=os.environ.get('SALES_SILVER_JOB'),
+        task_id='sales_silver'
+    )
+
+    heatl_bronze >> heatl_silver
+    sales_bronze >> sales_silver
